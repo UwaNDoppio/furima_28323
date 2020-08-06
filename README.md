@@ -20,12 +20,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| product_name | string     | null: false                    |
-| info         | string     | null: false                    |
-| price        | string     | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| product_name       | string     | null: false                    |
+| info               | string     | null: false                    |
+| category           | integer    | null: false                    |
+| sales_status       | integer    | null: false                    |
+| shipping_fee       | integer    | null: false                    |
+| prefecture         | integer    | null: false                    |
+| scheduled_delivery | integer    | null: false                    |
+| price              | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -53,6 +58,7 @@
 | prefecture         | string     | null: false                    |
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
+| building_name      | string     |                                |
 | phone_number       | string     | null: false                    |
 | transaction        | references | null: false, foreign_key: true |
 
