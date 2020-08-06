@@ -2,15 +2,16 @@
 
 ## users テーブル
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| first_name  | string | null: false |
-| family_name | string | null: false |
-| furigana    | string | null: false |
-| email       | string | null: false |
-| password    | string | null: false |
-| nickname    | string | null: false |
-| birthday    | date   | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| first_name      | string | null: false |
+| family_name     | string | null: false |
+| furigana_first  | string | null: false |
+| furigana_family | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| nickname        | string | null: false |
+| birthday        | date   | null: false |
 
 ### Association
 
@@ -21,12 +22,9 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| image        | string     | null: false                    |
 | product_name | string     | null: false                    |
 | info         | string     | null: false                    |
 | price        | string     | null: false                    |
-| category     | string     | null: false                    |
-| sales_status | string     | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
 ### Association
@@ -38,9 +36,6 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| shipping_fee        | string     | null: false                    |
-| prefecture          | string     | null: false                    |
-| scheduled_delivery  | string     | null: false                    |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
 
