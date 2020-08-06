@@ -29,13 +29,14 @@
 | shipping_fee       | integer    | null: false                    |
 | prefecture         | integer    | null: false                    |
 | scheduled_delivery | integer    | null: false                    |
-| price              | string     | null: false                    |
+| price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one    :transaction
+- has_one    :shipping_address
 
 ## transactions テーブル
 
@@ -48,7 +49,6 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one    :shipping_address
 
 ## shipping_address テーブル
 
@@ -60,8 +60,8 @@
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
 | phone_number       | string     | null: false                    |
-| transaction        | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :item
