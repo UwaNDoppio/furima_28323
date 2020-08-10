@@ -2,7 +2,9 @@ require 'rails_helper'
 describe User, type:  :model do
   describe 'ユーザー情報' do
     it "ニックネームが必須であること" do
-      
+      user = User.new(nickname: "", email: "kkk@gmail.com", password: "00000000", password_confirmation: "00000000")
+      user.valid?
+      expect(user.errors.full_messages).to include("Nickname can't be blank")
     end
     it "メールアドレスが必須であること" do
       

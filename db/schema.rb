@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_08_07_022553) do
     t.string "family_name", null: false
     t.string "furigana_first", null: false
     t.string "furigana_family", null: false
-    t.string "password", null: false
     t.string "nickname", null: false
     t.date "birthday", null: false
     t.string "reset_password_token"
