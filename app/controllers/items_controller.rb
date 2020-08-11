@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @itmes = Item.all
+    @itmes = Item.order(product_name: "DESC")
   end
 
   def new

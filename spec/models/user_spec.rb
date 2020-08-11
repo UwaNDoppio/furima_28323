@@ -49,4 +49,49 @@ describe User, type:  :model do
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
   end
+
+  describe '本人情報確認' do
+    it "ユーザー本名が、名前必須であること" do
+      @user.first_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it "ユーザー本名が、名字必須であること" do
+      @user.family_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")
+    end
+
+    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.family_name = "Tarou"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name は漢字で入力してください。")
+    end
+
+    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.first_name = "Yamada"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name は漢字で入力してください。")
+    end
+
+    it "ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること" do
+      @user.furigana_family = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Furigana family はカナで入力してください。")
+    end
+
+    it "ユーザー本名のフリガナは全角（カタカナ）で入力させること" do
+      @user.furigana_first = "Tarou"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Furigana first はカナで入力してください。")
+    end
+
+    it "生年月日が必須であること" do
+      @user.birthday = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+    end
+
+  end
 end
