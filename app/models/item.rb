@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
-  validates :product_name, :info, :user_id,  presence: true
+  validates :product_name, :info, :user_id, :image, presence: true
 
   with_options presence: true do
     validates :price, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
@@ -27,6 +27,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one    :item_purchase
   has_one    :shipping_address
+  has_one_attached :image
 
   
 
