@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
   def create
     @items = Item.new(items_params)
-    if @items.save!
+    if @items.save
         redirect_to items_path(@items)
     else
       render :new
