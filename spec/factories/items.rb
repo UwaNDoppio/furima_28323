@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :item do
-    image                     {Faker::Name.initials(number: 2)}
-    product_name              {Faker::Name.initials(number: 2)}
+    # id                        {1}
+    image                      { Rack::Test::UploadedFile.new(Rails.root.join('spec/factories/test.jpg'), 'image/jpeg') }
+    product_name              {Faker::Name.name}
     info                      {"説明しよう！"}
     category_id               {3}
     sales_status_id           {2}
