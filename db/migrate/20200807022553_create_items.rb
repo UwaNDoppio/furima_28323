@@ -10,6 +10,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :scheduled_delivery_id,   null: false
       t.integer :price,                null: false
       t.integer :user_id,             null: false
+      t.boolean :soldout_status
+      
 
       t.timestamps
     end
