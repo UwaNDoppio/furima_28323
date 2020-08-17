@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.new
   end
 
   def move_to_index
