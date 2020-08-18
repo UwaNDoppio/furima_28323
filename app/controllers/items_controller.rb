@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :edit]
+  before_action :move_to_index, except: [:index, :show, :edit, :new]
 
   def index
     @items = Item.all.order(product_name: "DESC")
@@ -19,10 +19,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = Item.new
   end
 
   def show
-    @items = Item.new
+    @items = Item.find(params[:id])
   end
 
   def move_to_index
