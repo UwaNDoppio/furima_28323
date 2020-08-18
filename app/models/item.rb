@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
+
   validates :product_name, :info, :user_id, :image, presence: true
 
   validates :category_id, :sales_status_id, :shipping_fee_id, :scheduled_delivery_id, numericality: { greater_than_or_equal_to: 2}
