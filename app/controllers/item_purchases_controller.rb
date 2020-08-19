@@ -1,5 +1,9 @@
 class ItemPurchasesController < ApplicationController
 
+  def index
+    @items = Item.new
+  end
+
 
   def show
     @items = Item.new
