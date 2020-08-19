@@ -23,7 +23,11 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @items.update(items_params)
+    if @items = Item.update(items_params)
+        redirect_to edit_item_path(@items)
+    else
+      render :edit
+    end
   end
 
 
