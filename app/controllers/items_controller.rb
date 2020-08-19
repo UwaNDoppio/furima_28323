@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :edit, :new]
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show,:destroy]
 
   def index
     @items = Item.all.order(product_name: "DESC")
@@ -33,6 +33,16 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def destroy
+    if 
+      @items.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
 
   def move_to_index
     unless user_signed_in?
