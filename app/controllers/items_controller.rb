@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :edit, :new]
+  before_action :set_item, only: [:edit, :show]
 
   def index
     @items = Item.all.order(product_name: "DESC")
@@ -19,11 +20,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @items = Item.new
   end
 
+  def update
+    if @items = Item.update(items_params)
+        redirect_to item_path(items_params)
+    else
+      render :edit
+    end
+  end
+
+
   def show
-    @items = Item.find(params[:id])
   end
 
   def move_to_index
@@ -31,6 +39,11 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def set_item
+    @items = Item.find(params[:id])
+  end
+
 
   private
 
