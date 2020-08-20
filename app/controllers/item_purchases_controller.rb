@@ -1,12 +1,17 @@
 class ItemPurchasesController < ApplicationController
 
   def index
-    @items = Item.new
+    #@item_purchase = Item_purchase.find(params[:items_id])
+  end
+
+  def new
   end
 
 
+  def create
+  end
+
   def show
-    @items = Item.new
   end
 
 
