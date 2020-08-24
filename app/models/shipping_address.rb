@@ -6,7 +6,7 @@ class ShippingAddress < ApplicationRecord
   validates :city, :address, :item_id, presence: true
 
   belongs_to :user, optional: true
-  belongs_to :item
+  belongs_to :item, optional: true
   
   with_options presence: true do
     VALID_POST_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
