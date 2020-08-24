@@ -1,8 +1,8 @@
 class ItemPurchasesController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :edit, :new, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @items =Item.find(params[:item_id])
     @shipping_address = ShippingAddress.new
   end
 
@@ -11,7 +11,6 @@ class ItemPurchasesController < ApplicationController
 
 
   def create
-    @items =Item.find(params[:item_id])
     @items.update(soldout_status: 1) 
     @shipping_address = ShippingAddress.new(shipping_address_params)
     @shipping_address.item_id = @items.id
@@ -48,5 +47,8 @@ class ItemPurchasesController < ApplicationController
     ShippingAddress.create(post_number:post_number,prefecture:prefecture,city:city,address:address,building_name:building_name,phone_number:phone_number,item_id:item_id)
   end
   
+  def set_item
+    @items = Item.find(params[:id])
+  end
 
 end

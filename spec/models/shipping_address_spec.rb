@@ -5,10 +5,16 @@ describe ShippingAddress, type:  :model do
   end
 
   describe '商品購入機能実装条件' do
-    it "配送先の情報として、配送先の情報として、郵便番号が必須であることが必須であること" do
+    it "配送先の情報として、郵便番号が必須であること" do
       @shipping_address.post_number = nil
       @shipping_address.valid?
       expect(@shipping_address.errors.full_messages).to include("Post number can't be blank")
+    end
+
+    it "配送先の情報として、郵便番号が{-}を含む半角数字であること" do
+      @shipping_address.post_number = '12345678'
+      @shipping_address.valid?
+      expect(@shipping_address.errors.full_messages).to include("Post number is invalid. Include hyphen(-)")
     end
 
     it "配送先の情報として、都道府県が必須であること" do
