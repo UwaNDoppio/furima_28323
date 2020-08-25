@@ -1,5 +1,6 @@
 class ItemPurchasesController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :edit, :new, :create]
+  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -48,7 +49,7 @@ class ItemPurchasesController < ApplicationController
   end
   
   def set_item
-    @items = Item.find(params[:id])
+    @items = Item.find(params[:item_id])
   end
 
   def move_to_index

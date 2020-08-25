@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :edit, :new, :update, :create]
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :show,:destroy]
 
   def index
