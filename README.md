@@ -67,3 +67,5 @@
 - belongs_to :item
 
 test
+
+heroku restart
